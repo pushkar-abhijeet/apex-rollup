@@ -1759,6 +1759,41 @@ private class RollupIntegrationTests {
     System.assert(true, 'Should make it here');
   }
 
+  @IsTest
+  static void shouldWorkWhenFilteredFieldsIncludeStandardRollupFields() {
+    Rollup.onlyUseMockMetadata = true;
+    Rollup.rollupMetadata = new List<Rollup__mdt>{
+      new Rollup__mdt(
+        RollupFieldOnCalcItem__c = 'Name',
+        LookupObject__c = 'Application__c',
+        LookupFieldOnCalcItem__c = 'Application__c',
+        LookupFieldOnLookupObject__c = 'Id',
+        RollupFieldOnLookupObject__c = 'Objects__c',
+        RollupOperation__c = 'CONCAT_DISTINCT',
+        CalcItem__c = 'ApplicationLog__c',
+        CalcItemWhereClause__c = 'CountOfChildrenFormula__c > 0'
+      )
+    };
+
+    Application__c app = new Application__c(Name = 'Rollup Parent');
+    insert app;
+
+    ApplicationLog__c appLog = new ApplicationLog__c(Name = 'Rollup intermediate', Application__c = app.Id);
+    ApplicationLog__c initialAppChildParent = new ApplicationLog__c(Name = 'Initial parent');
+    insert new List<ApplicationLog__c>{ appLog, initialAppChildParent };
+
+    AppLogChild__c appLogChild = new AppLogChild__c(ApplicationLog__c = initialAppChildParent.Id);
+    insert appLogChild;
+
+    Test.startTest();
+    appLogChild.ApplicationLog__c = appLog.Id;
+    update appLogChild;
+    Test.stopTest();
+
+    Application__c updatedApp = [SELECT Objects__c FROM Application__c WHERE Id = :app.Id];
+    System.assertEquals(appLog.Name, updatedApp.Objects__c);
+  }
+
   /** Schedulable tests */
   @IsTest
   static void shouldThrowExceptionForBadQuery() {
