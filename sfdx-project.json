@@ -18,12 +18,12 @@
             "path": "plugins\\CustomObjectRollupLogger",
             "dependencies": [
                 {
-                    "package": "apex-rollup@1.4.7-0"
+                    "package": "apex-rollup@1.6.0-0"
                 }
             ],
-            "versionNumber": "0.0.12.0",
-            "versionName": "Corrected assertion in one of the custom logger tests",
-            "versionDescription": "Adds RollupLog__c and RollupLogEntry__c custom objects to allow storage of rollup debug logs",
+            "versionNumber": "0.0.13.0",
+            "versionName": "Properly refer to Org_Defaults Rollup Control",
+            "versionDescription": "Prior versions of plugin used fallback values instead of properly delegating configured values to use the Rollup Control CMDT record",
             "default": false,
             "unpackagedMetadata": {
                 "path": "plugins/CustomObjectRollupLogger/tests"
@@ -88,8 +88,7 @@
     "sourceApiVersion": "65.0",
     "packageAliases": {
         "Apex Rollup - Custom Logger": "0Ho6g000000Gn8ZCAS",
-        "Apex Rollup - Custom Logger@0.0.11-0": "04t6g000008SirvAAC",
-        "Apex Rollup - Custom Logger@0.0.12-0": "04t6g000008SjqIAAS",
+        "Apex Rollup - Custom Logger@0.0.13": "04tKf000000syF7IAI",
         "Apex Rollup - Extra Code Coverage": "0Ho6g000000GnCWCA0",
         "Apex Rollup - Extra Code Coverage@0.0.26": "04tKf000000sxvyIAA",
         "Apex Rollup - Extra Code Coverage@0.0.27": "04tKf000000syAMIAY",

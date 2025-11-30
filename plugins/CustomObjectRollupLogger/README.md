@@ -1,11 +1,11 @@
 # Custom Object Rollup Logger
 
-<a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6g000008SjqIAAS">
+<a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tKf000000syF7IAI">
   <img alt="Deploy to Salesforce"
        src="../../media/deploy-package-to-prod.png">
 </a>
 
-<a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6g000008SjqIAAS">
+<a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tKf000000syF7IAI">
   <img alt="Deploy to Salesforce Sandbox"
        src="../../media/deploy-package-to-sandbox.png">
 </a>
@@ -14,7 +14,7 @@ To install this plugin and get it setup within your org properly:
 
 1. Install the unmanaged package via the buttons above
 2. Navigate to the Rollup Plugin CMDT (Setup -> Custom Metadata Types -> Manage Records next to Rollup Plugin -> New)
-3. (This should already be done for you, upon install, but always good to double-check) - Enter `RollupCustomObjectLogger` into the `Rollup Plugin Name` field, choose the `Org_Default` rollup control record (and ensure `Is Rollup Logging Enabled?` is checked off on that record); the label can be whatever you'd like
+3. (This should already be done for you, upon install, but always good to double-check) - Enter `RollupCustomObjectLogger` into the `Rollup Plugin Name` field, choose the `Org_Defaults` rollup control record (and ensure `Is Rollup Logging Enabled?` is checked off on that record); the label can be whatever you'd like
 
 That's it! Logs will now start flowing through on all rollup operations to `RollupLog__c`. A permission set, `Rollup Log Viewer` is included so that you can grant Rollup Log access to users other than yourself (should you be so inclined). You can use the included `Rollup Plugin Parameter` CMDT record `Custom Logging Debug Level` to fine-tune the logging level you'd like to use. Valid entries conform to the `System.LoggingLevel` enum: ERROR, WARN, INFO, DEBUG, FINE, FINER, FINEST. FINEST provides the highest level of detail; ERROR provides the least.
 
@@ -31,4 +31,4 @@ Id jobId = RollupLogBatchPurger.schedule(jobName, cronSchedule);
 // which represents a scheduled job
 ```
 
-The batch size for the scheduled job is also determined by the `Org_Default` Rollup Control record's `Batch Chunk Size` field (defaults to 2000).
+The batch size for the scheduled job is also determined by the `Org_Defaults` Rollup Control record's `Batch Chunk Size` field (defaults to 2000).

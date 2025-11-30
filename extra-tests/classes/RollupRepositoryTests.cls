@@ -71,6 +71,7 @@ private class RollupRepositoryTests {
     Assert.areEqual('d', orderBys.get(3).DeveloperName);
   }
 
+  @SuppressWarnings('PMD.EagerlyLoadedDescribeSObjectResult')
   @IsTest
   static void allOrderByFieldsAreQueried() {
     List<Rollup__mdt> rollupMetadata = RollupRepository.getRollupMetadata();
@@ -98,7 +99,7 @@ private class RollupRepositoryTests {
   /**
    * Serialization proves that we don't get: `System.JSONException: Type unsupported in JSON: common.apex.methods.AccessLevelEnum`
    */
-  @future
+  @Future
   private static void serializedRun(String serializedRepo) {
     RollupRepository repo = (RollupRepository) JSON.deserialize(serializedRepo, RollupRepository.class);
     repo.setQuery('SELECT COUNT() FROM Account').getCount();

@@ -1323,9 +1323,9 @@ engines:
   # To learn more about this configuration, visit:
   #   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-flowtest.html#flowtest-configuration-reference
   # ======================================================================
-  flowtest:
+  flow:
     # Whether to turn off the 'flowtest' engine so that it is not included when running Code Analyzer commands.
-    disable_engine: false
+    disable_engine: true
 
     # Indicates the specific Python command to use for the 'flowtest' engine.
     # May be provided as the name of a command that exists on the path, or an absolute file path location.

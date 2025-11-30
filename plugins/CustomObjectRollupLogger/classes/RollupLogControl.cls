@@ -1,7 +1,7 @@
 public class RollupLogControl {
   private static final Integer FALLBACK_DATE_OFFSET = 5;
   private static final Integer FALLBACK_BATCH_CHUNK_SIZE = 2000;
-  private static final RollupControl__mdt ORG_DEFAULT = RollupControl__mdt.getInstance('Org_Default');
+  private static final RollupControl__mdt ORG_DEFAULT = RollupControl__mdt.getInstance('Org_Defaults');
   private static final RollupPlugin PLUGIN = new RollupPlugin();
   private static final RollupPluginParameter__mdt DATE_OFFSET = PLUGIN.getParameterInstance('DaysRollupLogsRetained');
 
