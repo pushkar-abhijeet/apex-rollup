@@ -46,7 +46,10 @@ for (dlrs__LookupRollupSummary2__mdt dlrsRule : dlrs__LookupRollupSummary2__mdt.
   Schema.SObjectField rollupFieldCalcItem = please__Rollup__mdt.please__RollupFieldOnCalcItem__c;
   Schema.SObjectField rollupFieldParent = please__Rollup__mdt.please__RollupFieldOnLookupObject__c;
 
-  if (objectsUnsupportedUsingEntityDefinition.contains(dlrsRule.dlrs__ChildObject__c)) {
+  if (
+    objectsUnsupportedUsingEntityDefinition.contains(dlrsRule.dlrs__ChildObject__c) ||
+    objectsUnsupportedUsingEntityDefinition.contains(dlrsRule.dlrs__ParentObject__c)
+  ) {
     calcObject = please__Rollup__mdt.please__CalcItemText__c;
     lookupFieldCalcItem = please__Rollup__mdt.please__LookupFieldOnCalcItemText__c;
     lookupFieldParent = please__Rollup__mdt.please__LookupFieldOnLookupObjectText__c;
